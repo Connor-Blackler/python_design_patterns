@@ -3,6 +3,7 @@ from abc import ABC, abstractmethod
 from pathlib import Path
 from .pictures import Picture
 
+
 class PictureExporter(ABC):
     """an abstract picture exporter"""
 
@@ -14,8 +15,10 @@ class PictureExporter(ABC):
     def do_export(self) -> bool:
         """a abstract method that conducts the export"""
 
+
 class PictureExporterPNG(PictureExporter):
     """Converts a picture to a PNG"""
+
     def prepare_export(self, picture: Picture, src: Path):
         """a concrete method that prepares the PNG export"""
         print("Preparing to export to PNG format")
@@ -25,8 +28,10 @@ class PictureExporterPNG(PictureExporter):
         print("Exporting picture to PNG format")
         return True
 
+
 class PictureExporterJPEG(PictureExporter):
     """Converts a picture to a JPEG"""
+
     def prepare_export(self, picture: Picture, src: Path):
         """a concrete method that prepares the JPEG export"""
         print("Preparing to export to JPEG format")

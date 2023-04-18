@@ -1,6 +1,9 @@
 """A module to show the iterator design pattern"""
+
+
 class IntA:
-    """A class to emulate an array of integers"""    
+    """A class to emulate an array of integers"""
+
     def __init__(self, ints: tuple = ()) -> None:
         self.__current_iterator = 0
         self.__ints = list(ints)
@@ -39,9 +42,10 @@ class IntA:
             self.__current_iterator += 1
             return ret
 
+
 def main() -> None:
     """The main function to show the iterator design pattern"""
-    my_ints = IntA((10,3,1,2))
+    my_ints = IntA((10, 3, 1, 2))
     my_ints.append(20)
     my_ints.append(7)
 
@@ -49,5 +53,6 @@ def main() -> None:
         print(this_int)
 
     print(my_ints.evens())
+
 
 main()

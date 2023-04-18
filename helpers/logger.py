@@ -1,7 +1,9 @@
 """A module contain a logger helper class"""
 
+
 class Logger():
     """A logger class that has built in indentions"""
+
     def __init__(self) -> None:
         self.__indention = 0
 
@@ -12,7 +14,7 @@ class Logger():
     def _get_indention(self) -> str:
         ret = ""
 
-        for i in range(0,self._indention_amount()):
+        for i in range(0, self._indention_amount()):
             ret = ret + "    "
 
         return ret
@@ -26,4 +28,4 @@ class Logger():
 
     def unindent(self) -> None:
         """Removes an indention from the log stream"""
-        self.__indention = max(0,self.__indention - 1)
+        self.__indention = max(0, self.__indention - 1)

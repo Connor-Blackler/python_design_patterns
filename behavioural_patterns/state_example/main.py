@@ -1,16 +1,21 @@
 """A module to show the state design pattern"""
 from typing import Protocol, Callable
 
+
 class StateInterface(Protocol):
     """A protocol to handle anything representing a state that can perform work"""
+
     def do_work(self) -> None:
         """Execute the work"""
 
+
 SetStateCallback = Callable[[StateInterface], None]
+
 
 class __State():
     def __init__(self, callback: SetStateCallback) -> None:
         self._callback = callback
+
 
 class _stateA(__State):
     def do_work(self) -> None:
@@ -19,6 +24,7 @@ class _stateA(__State):
         print("setting to _stateB")
         self._callback(_stateB)
 
+
 class _stateB(__State):
     def do_work(self) -> None:
         """StateB to perform its work"""
@@ -26,8 +32,10 @@ class _stateB(__State):
         print("setting to _stateA")
         self._callback(_stateA)
 
+
 class Context():
     """A class to handle the context of the state"""
+
     def __init__(self, initial_state: StateInterface) -> None:
         self.__set_state(initial_state)
 
@@ -46,7 +54,8 @@ def main() -> None:
     """The main function to show the state design pattern"""
     my_context = Context(_stateA)
 
-    for i in range(1,5):
+    for i in range(1, 5):
         my_context.do_work()
+
 
 main()

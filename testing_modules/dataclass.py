@@ -3,9 +3,11 @@ import string
 import random
 from dataclasses import dataclass, field
 
+
 def _generator() -> str:
     """Generates a random 32byte string"""
     return "".join(random.choices(string.ascii_lowercase, k=32))
+
 
 @dataclass(frozen=False)
 class Human:
@@ -21,12 +23,16 @@ class Human:
     def __post_init__(self) -> None:
         object.__setattr__(self, '_searcher', f"{self.name} {self.addresses}")
 
+
 def main() -> None:
-    connor = Human(name="Connor", height=4.3, addresses=["123 weavy way","532 santa road"])
-    connor.name="Connor2"#This breaks when frozen=true
+    connor = Human(name="Connor", height=4.3, addresses=[
+                   "123 weavy way", "532 santa road"])
+    connor.name = "Connor2"  # This breaks when frozen=true
     print(connor)
 
-    brandy = Human(name="Brandy", height=2.3, addresses=["1553 ddd ddd"], sex="female")
+    brandy = Human(name="Brandy", height=2.3, addresses=[
+                   "1553 ddd ddd"], sex="female")
     print(brandy)
+
 
 main()

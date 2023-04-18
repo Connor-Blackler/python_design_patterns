@@ -2,10 +2,13 @@ from __future__ import annotations
 from typing import Protocol
 from abc import ABC, abstractmethod
 
+
 class ObserverProtocol(Protocol):
     """A class to emulate any observer"""
+
     def update(self, subject: AbstractSubject) -> None:
         """Calls update on the protocol"""
+
 
 class AbstractSubject(ABC):
     """An abstract class to represent a subject"""
@@ -20,6 +23,7 @@ class AbstractSubject(ABC):
     @abstractmethod
     def update(self) -> None:
         """Called when an update occurs"""
+
 
 def Observer(cls):
     def subscribe(self, my_observer: ObserverProtocol) -> None:

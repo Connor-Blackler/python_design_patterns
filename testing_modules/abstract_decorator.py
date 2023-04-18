@@ -2,8 +2,10 @@
 from __future__ import annotations
 from abc import ABC, abstractmethod
 
+
 class Element(ABC):
     """A class that emulates any element"""
+
     def __init__(self, age: int):
         """Calls the property decerator on the subclass that is inforced by abstract method"""
         self.age = age
@@ -24,6 +26,7 @@ class Element(ABC):
         a subclass is instanticated without implementing
         """
 
+
 class Human(Element):
     """A class to emulate a human"""
     @Element.age.setter
@@ -32,6 +35,7 @@ class Human(Element):
 
     def __mul__(self, other: Element):
         return Human(self._age * other._age)
+
 
 class Dog(Element):
     """A class to emulate a dog"""
@@ -42,6 +46,7 @@ class Dog(Element):
     def __mul__(self, other: Element) -> Dog:
         return Dog(self._age * other._age)
 
+
 def main() -> None:
     """The main function that shows the abstract decorator"""
     a = Human(15)
@@ -50,5 +55,6 @@ def main() -> None:
 
     b = Dog(1)
     print(b)
+
 
 main()

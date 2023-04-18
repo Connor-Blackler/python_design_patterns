@@ -1,6 +1,7 @@
 """The main module to show the decorator design pattern"""
 import time
 
+
 def example_timing():
     """function to show how to decorator a function to add timing"""
     def time_it(fn):
@@ -17,6 +18,7 @@ def example_timing():
 
     run()
 
+
 def example_logging():
     """function to show how to decorator a function to add logs"""
     def logger_fn(fn):
@@ -32,9 +34,11 @@ def example_logging():
 
     print(my_fn(20, 54))
 
+
 def main() -> None:
     """The main function to show the decorator example"""
     example_timing()
     example_logging()
+
 
 main()

@@ -1,15 +1,19 @@
 """The main module to show the delegation design pattern"""
 from typing import Protocol
 
+
 class Choppable(Protocol):
     """A Protocal for an item that can be chopped"""
+
     def chop(self) -> None:
         ...
+
 
 class _Table():
     def prepare(self) -> None:
         """Prepare the table"""
         print("preparing the table")
+
 
 class _ChoppingBoard():
     def __init__(self, items_to_chop: list[Choppable]) -> None:
@@ -39,15 +43,18 @@ class _ChoppingBoard():
         for item_to_chop in self:
             item_to_chop.chop()
 
+
 class _Apple():
     def chop(self) -> None:
         """Chop the apple"""
         print("chopping the apple")
 
+
 class _Pear():
     def chop(self) -> None:
         """Chop the pear"""
         print("chopping the pear")
+
 
 def _chop(items_to_chop: list[Choppable]) -> None:
     my_table = _Table()
@@ -56,9 +63,11 @@ def _chop(items_to_chop: list[Choppable]) -> None:
     my_chopping_board.prepare(my_table)
     my_chopping_board.chop()
 
+
 def main() -> None:
     """The main function to show the facade design pattern"""
     items_to_chop = [_Pear(), _Apple(), _Apple(), _Pear()]
     _chop(items_to_chop)
+
 
 main()

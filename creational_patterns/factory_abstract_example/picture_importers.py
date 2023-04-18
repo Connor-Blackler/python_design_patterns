@@ -3,6 +3,7 @@ from abc import ABC, abstractmethod
 from pathlib import Path
 from .pictures import Picture
 
+
 class PictureImporter(ABC):
     """an abstract picture importer"""
 
@@ -14,8 +15,10 @@ class PictureImporter(ABC):
     def do_import(self) -> Picture:
         """a abstract method that conducts the import"""
 
+
 class PictureImporterPNG(PictureImporter):
     """Converts picture to a PNG"""
+
     def prepare_import(self, src: Path):
         """a concrete method that prepares the PNG import"""
         print("Preparing to import a PNG")
@@ -24,8 +27,10 @@ class PictureImporterPNG(PictureImporter):
         """a concrete method that conducts the PNG import"""
         print("Importing the PNG data, and converting to a picture object")
 
+
 class PictureImporterJPEG(PictureImporter):
     """converts a picture to a jpeg"""
+
     def prepare_import(self, src: Path):
         """a concrete method that prepares the JPEG import"""
         print("Preparing to import a JPEG")

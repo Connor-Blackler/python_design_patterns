@@ -1,6 +1,7 @@
 """A Module that shows the adapter design pattern"""
 from .adapter_protocol import Clean
 
+
 class Cleaner():
     def __init__(self, clean: Clean) -> None:
         self.__clean = clean

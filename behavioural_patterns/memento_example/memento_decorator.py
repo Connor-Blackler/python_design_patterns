@@ -1,6 +1,8 @@
 """A module that holds the memento decorator"""
+
 def _get_properties(obj) -> list[str]:
     return [prop for prop in dir(obj) if not prop.startswith('__') and not callable(getattr(obj, prop))]
+
 
 def _get_properties_d(obj, properties: list[str]) -> dict:
     ret = {}
@@ -10,15 +12,18 @@ def _get_properties_d(obj, properties: list[str]) -> dict:
 
     return ret
 
+
 def memento(cls):
     """
     A decorator that:
         adds save() method to the instance, which saves all properties 
         adds restore() method to the instance, which restores to its previous state
     """
+
     def save(self):
         print("save state")
-        self.__saved_states.append(_get_properties_d(self,_get_properties(self)))
+        self.__saved_states.append(
+            _get_properties_d(self, _get_properties(self)))
 
     def restore(self):
         if len(self.__saved_states) == 0:

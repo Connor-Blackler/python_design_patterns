@@ -6,8 +6,10 @@ from .car_selectables.radio import *
 from .car_selectables.sellable import Sellable
 from helpers.logger import Logger
 
+
 def __compute_price(this_price: Sellable) -> float:
     return this_price.protocol_price()
+
 
 @dataclass
 class Car(Sellable):
@@ -33,6 +35,7 @@ class Car(Sellable):
         self.my_engine.log(logger)
         self.my_radio.log(logger)
 
+
 def main(log: Logger) -> None:
     """The main function to shoe the build example"""
     new_car = Car()
@@ -43,5 +46,6 @@ def main(log: Logger) -> None:
 
     new_car.log(log)
     log.log("total price: " + str(__compute_price(new_car)))
+
 
 main(Logger())

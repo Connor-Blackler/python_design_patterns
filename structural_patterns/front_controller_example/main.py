@@ -2,11 +2,13 @@
 from enum import StrEnum, auto
 from abc import ABC, abstractmethod
 
+
 class ControlType(StrEnum):
     """An enum that emulates the different usable control types"""
     FRIDGE = auto()
     MICROWAVE = auto()
     OVEN = auto()
+
 
 class _Control(ABC):
     @abstractmethod
@@ -20,12 +22,14 @@ class _Control(ABC):
     def __eq__(self, other: ControlType) -> bool:
         return self._my_control_type() == other
 
+
 class _Fridge(_Control):
     def turn_on(self) -> None:
         print("turning on the fridge")
 
     def _my_control_type(self) -> ControlType:
         return ControlType.FRIDGE
+
 
 class _Microwave(_Control):
     def turn_on(self) -> None:
@@ -34,6 +38,7 @@ class _Microwave(_Control):
     def _my_control_type(self) -> ControlType:
         return ControlType.MICROWAVE
 
+
 class _Oven(_Control):
     def turn_on(self) -> None:
         print("turning on the oven")
@@ -41,10 +46,12 @@ class _Oven(_Control):
     def _my_control_type(self) -> ControlType:
         return ControlType.OVEN
 
+
 class ControlDispatcher():
     """A class that holds all the dispatchers, and controls them directly"""
+
     def __init__(self) -> None:
-        self._dispatchables = [_Oven(),_Microwave(),_Fridge()]
+        self._dispatchables = [_Oven(), _Microwave(), _Fridge()]
 
     def dispatch(self, control_type) -> None:
         """Dispatch with a matching control type"""
@@ -52,11 +59,13 @@ class ControlDispatcher():
             if control == control_type:
                 control.turn_on()
 
+
 class FrontController():
     """
     The front controller that handles what items are allowed to be dispatched
     fowards to the dispatcher if authorized
     """
+
     def __init__(self) -> None:
         self.__my_dispatcher = ControlDispatcher()
         self.__authorized_list = []
@@ -67,7 +76,7 @@ class FrontController():
     def authorize(self, control: ControlType) -> None:
         """Authorize the control"""
         if not control in self.__authorized_list:
-            print(f"authorizing {control}" )
+            print(f"authorizing {control}")
             self.__authorized_list.append(control)
 
     def dispatch(self, control: ControlType) -> None:
@@ -76,6 +85,7 @@ class FrontController():
             self.__my_dispatcher.dispatch(control)
         else:
             print(f"{control} is not authorized")
+
 
 def main() -> None:
     """The main function that shows the front controller design pattern"""
@@ -88,5 +98,6 @@ def main() -> None:
     my_controller.authorize(ControlType.FRIDGE)
     my_controller.dispatch(ControlType.MICROWAVE)
     my_controller.dispatch(ControlType.FRIDGE)
+
 
 main()

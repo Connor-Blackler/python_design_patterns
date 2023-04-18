@@ -2,8 +2,10 @@
 from __future__ import annotations
 from helpers.logger import Logger
 
+
 class Personel():
     """Emulates a person with its dependents"""
+
     def __init__(self, name: str) -> None:
         self.__name = name
         self.__children: list[Personel] = []
@@ -28,14 +30,17 @@ class Personel():
         log.unindent()
         log.unindent()
 
+
 class School():
     """A class to emulate a school"""
+
     def __init__(self, headmaster: Personel) -> None:
         self.__headmaster = headmaster
 
     def report(self, log: Logger):
         """reports the school heiarchy"""
         self.__headmaster.report(log)
+
 
 def get_year_1() -> Personel:
     """Returns the structure of year 1"""
@@ -48,6 +53,7 @@ def get_year_1() -> Personel:
 
     return teacher
 
+
 def get_year_2() -> Personel:
     """Returns the structure of year 2"""
     child1 = Personel("child 1 from year 2")
@@ -59,6 +65,7 @@ def get_year_2() -> Personel:
 
     return teacher
 
+
 def main() -> None:
     """Main function to show the composite example"""
     year_1 = get_year_1()
@@ -69,5 +76,6 @@ def main() -> None:
     head_master.add_personel(year_2)
     my_school = School(head_master)
     my_school.report(Logger())
+
 
 main()

@@ -1,6 +1,7 @@
 """The main module that shows lazy initialization design pattern"""
 from functools import cached_property
 
+
 class _DatabaseEmulator():
     def connect(self) -> None:
         """Connect to the database"""
@@ -9,6 +10,7 @@ class _DatabaseEmulator():
     def execute(self, statement: str):
         """Execute the statement to the database"""
         print("### executing the db statement: " + statement)
+
 
 class Database():
     """
@@ -30,6 +32,7 @@ class Database():
         """Execute a statement"""
         self.my_db.execute(statement)
 
+
 def main() -> None:
     """The main function to show the design pattern"""
     print("instantiating the database...")
@@ -41,5 +44,6 @@ def main() -> None:
 
     print("# 2nd statement")
     my_database.execute("2nd statement")
+
 
 main()

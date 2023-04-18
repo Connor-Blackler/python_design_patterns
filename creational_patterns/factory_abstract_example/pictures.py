@@ -3,6 +3,7 @@ from typing import Self
 from dataclasses import dataclass, field
 import numpy as np
 
+
 @dataclass
 class Pixel():
     """A class to emulate a single pixel"""
@@ -11,8 +12,10 @@ class Pixel():
     b = np.uint8
     a = np.uint8
 
+
 class PixelA:
     """A class to hold an array of Pixel objects"""
+
     def __init__(self) -> None:
         self.__pixels = list[Pixel]
         self.__current_iterator = 0
@@ -32,6 +35,7 @@ class PixelA:
             ret = self.__pixels[self.__current_iterator]
             self.__current_iterator += 1
             return ret
+
 
 @dataclass
 class Picture:
